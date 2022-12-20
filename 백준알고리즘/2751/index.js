@@ -1,16 +1,25 @@
 const fs = require('fs');
-const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
-const input = fs.readFileSync(filePath).toString().split(' ')
+// For local test
+// const input = [10, 5, 2, 3, 1, 4, 2, 3, 5, 1, 7];
 
-input.forEach((item, index) => {
-  input[index] = Number(item)
-})
+// For submit
+const fs = require('fs');
+const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n').map(num => parseInt(num, 10));
 
+/** 시간초과로 실패.. **/
 function solution(arr) {
-  // arr[0] =
+  for (let i = arr.length - 1; i > 0; i--) {
+    for (let j = 0; j <= i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        const temp = arr[j]
+        arr[j] = arr[j + 1]
+        arr[j + 1] = temp
+      }
+    }
+  }
+  return arr;
 }
 
 const arr = input.splice(1)
-
-console.log(solution(arr))
+console.log(solution(arr).join('\n'))
 
