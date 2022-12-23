@@ -1,19 +1,25 @@
 // 오름차순으로 정렬이 된 두 배열이 주어지면 두 배열을 오름차순으로 합쳐 출력하는 프로그램 을 작성하세요.
 
 function solution(arr1, arr2){
-  console.time('solution')
   let answer=[];
   let n=arr1.length;
   let m=arr2.length;
   let p2;
   let p1=p2=0;
+  
+  // 무조건 arr1 및 arr2는 추가를 한다.
+  // 추가하는 조건은 현재 arr1이나 arr2의 포인터가 각각의 배열의 총 갯수보다 작으면 각각 포인터가 가리키는 요소를 비교후 추가
   while(p1<n && p2<m){
     if(arr1[p1]<=arr2[p2]) answer.push(arr1[p1++]);
     else answer.push(arr2[p2++]);
   }
+  
+  // 만약 p1포인터가 남게 되면 나머지값들을 p1포인터가 가리키는 값을 쭉 추가
   while(p1<n) {
     answer.push(arr1[p1++]);
   }
+  
+  // 만약 p2포인터가 남게 되면 나머지값들을 p1포인터가 가리키는 값을 쭉 추가
   while(p2<m) {
     answer.push(arr2[p2++]);
   }

@@ -2,13 +2,21 @@ function solution(arr1, arr2){
   let answer=[];
   let p1, p2;
   p1=p2=0;
+  
+  // 먼저 arr1과 arr2를 정렬시킨다.
   arr1.sort();
   arr2.sort();
+  
+  // p1 포인터와 p2포인터가 arr1, arr2의 크기보다 작을때 반복문을 계속 수행한다.
   while(p1<arr1.length && p2<arr2.length){
+    // p1포인터의 값과 p2포인터의 값이 같으면 result에 추가한다.
+    // 이후 p1과 p2를 하나씩 증가시킨다.
     if(arr1[p1]==arr2[p2]){
       answer.push(arr1[p1++]);
       p2++;
     }
+    
+    // 만약 p1과 p2가 다르면 p1 포인터, p2포인터의 값을 비교후 더 작은 값의 pointer를 1개 증가시킨다.
     else if(arr1[p1]<arr2[p2]) p1++;
     else p2++;
   }
