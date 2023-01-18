@@ -15,14 +15,16 @@ function solution(str1, str2){
   // 1. Map 자료구조 생성
   let sH = new Map();
   
-  // 2. 첫번째로 입력받은 문장에 대한 알파벳 카운팅
+  // 2. 첫번째로 입력받은 문장에 대한 알파벳 카운팅 (map 이용)
   for(let x of str1){
     if(sH.has(x)) sH.set(x, sH.get(x)+1);
     else sH.set(x, 1);
   }
   
-  // 3. 첫번째로 입력받은
+  // 3. 두번째로 입력받은 문장의 각각의 알파벳 값을 첫번째 Map을 이용하여 다른지 검출
   for(let x of str2){
+    // 만약 키값으로 값이 없거나 값이 0이라면 false 출력
+    // 즉 갯수에 맞게 딱 떨어져야 함
     if(!sH.has(x) || sH.get(x)==0) return "NO";
     sH.set(x, sH.get(x)-1);
   }

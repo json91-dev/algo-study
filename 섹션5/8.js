@@ -20,21 +20,65 @@
  */
 
 function compareMaps(map1, map2){
+  // 사이즈가 다르면 반환
   if(map1.size!==map2.size) return false;
   for(let [key, val] of map1){
     if(!map2.has(key) || map2.get(key)!==val) return false;
   }
   return true;
 }
+
+function solution(s, t){
+  let answer=0;
+  let tH = new Map();
+  let sH = new Map();
+  for(let x of t){
+    if(tH.has(x)) tH.set(x, tH.get(x)+1);
+    else tH.set(x, 1);
+  }
+  let len=t.length-1;
+  for(let i=0; i<len; i++){
+    if(sH.has(s[i])) sH.set(s[i], sH.get(s[i])+1);
+    else sH.set(s[i], 1);
+  }
+  let lt=0;
+  for(let rt=len; rt<s.length; rt++){
+    if(sH.has(s[rt])) sH.set(s[rt], sH.get(s[rt])+1);
+    else sH.set(s[rt], 1);
+    if(compareMaps(sH, tH)) answer++;
+    sH.set(s[lt], sH.get(s[lt])-1);
+    if(sH.get(s[lt])===0) sH.delete(s[lt]);
+    lt++;
+  }
+  return answer;
+}
+
 function mySolution(s, t){
-  let answer = '';
+  let answer = 0;
+  const mapB = new Map()
   
+  // 첫번째 문자열의 hashmap
+  for (let x of t) {
+    if(mapB.has(x)) mapB.set(x, mapB.get(x)+1);
+    else mapB.set(x, 1);
+  }
   
-  
+  for (let i =0; i <= s.length - t.length; i++) {
+    const mapA = new Map()
+    const str = s.substr(i, t.length);
+    for(let x of str){
+      if(mapA.has(x)) mapA.set(x, mapA.get(x)+1);
+      else mapA.set(x, 1);
+    }
+    
+    if (compareMaps(mapA, mapB)) {
+      answer++
+    }
+  }
   
   return answer;
 }
 
 let a="bacaAacba";
-let b="abc";
-console.log(solution(a, b));
+let b="aAc";
+console.log(mySolution(a, b));
