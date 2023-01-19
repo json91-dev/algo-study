@@ -1,10 +1,10 @@
 const fs = require('fs');
 // For local test
-// const input = [10, 5, 2, 3, 1, 4, 2, 3, 5, 1, 7];
+const input = [10, 5, 2, 3, 1, 4, 2, 3, 5, 1, 7,10, 5, 2, 3, 1, 4, 2, 3, 5, 1, 7,10, 5, 2, 3, 1, 4, 2, 3, 5, 1, 7,10, 5, 2, 3, 1, 4, 2, 3, 5, 1, 7,10, 5, 2, 3, 1, 4, 2, 3, 5, 1, 7,10, 5, 2, 3, 1, 4, 2, 3, 5, 1, 7,10, 5, 2, 3, 1, 4, 2, 3, 5, 1, 7,10, 5, 2, 3, 1, 4, 2, 3, 5, 1, 7,10, 5, 2, 3, 1, 4, 2, 3, 5, 1, 7,10, 5, 2, 3, 1, 4, 2, 3, 5, 1, 7,10, 5, 2, 3, 1, 4, 2, 3, 5, 1, 7,];
 
 // For submit
-const fs = require('fs');
-const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n').map(num => parseInt(num, 10));
+// const fs = require('fs');
+// const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n').map(num => parseInt(num, 10));
 
 /** 시간초과로 실패.. **/
 function solution(arr) {
@@ -21,5 +21,8 @@ function solution(arr) {
 }
 
 const arr = input.splice(1)
-console.log(solution(arr).join('\n'))
+solution(arr).join('\n')
+
+console.time('시작')
+console.timeEnd('시작')
 
