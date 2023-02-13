@@ -29,12 +29,14 @@ function solution(s){
 function mySolution(s){
   let answer = 'YES'
   const stack = []
-
+  
   for (const c of s) {
     if (c === '(') {
+      // 왼쪽 괄호일때는 Stack에 푸시
       stack.push(c)
     } else if (c === ')') {
       if (stack.length > 0) {
+        // 스택이 비어있지 않고 오른쪽 괄호가 들어오면 Stack에서 pop
         stack.pop()
       } else {
         answer = 'NO'
