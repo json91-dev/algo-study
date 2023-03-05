@@ -5,7 +5,21 @@
     </head>
     <body>
         <script>
-
+            function solution(s){
+              let answer;
+              let stack=[];
+              for(let x of s){
+                if(x===')'){
+                  // ')'를 만나면 '('를 만날때까지 Stack에서 제거
+                  while(stack.pop()!=='(');
+                }
+                else stack.push(x); // ')'가 아닐때 모두 스택에 push
+              }
+              answer=stack.join('');
+              return answer;
+            }
+            let str="(A(BC)D)EF(G(H)(IJ)K)LM(N)";
+            console.log(solution(str));
         </script>
     </body>
 </html>
