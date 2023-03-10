@@ -1,8 +1,11 @@
 function mySolution(arr){
   let answer=arr;
+
   for (let i = 0; i < arr.length ; i++) {
     let min = Number.MAX_SAFE_INTEGER;
     let minIndex = -1
+
+    // 마지막 인자에서 하나씩 채워나감.
     for (let j = arr.length -1; j > i; j--) {
       if (min > arr[j]) {
         min = arr[j]
@@ -10,6 +13,7 @@ function mySolution(arr){
       }
     }
 
+    // 최소값과 현재 Index의 인자를 바꿔줌
     if (arr[i] > arr[minIndex]) {
       const temp = arr[i]
       arr[i] = arr[minIndex]

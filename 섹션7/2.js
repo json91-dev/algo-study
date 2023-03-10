@@ -14,6 +14,7 @@ function mySolution(arr){
   let answer=arr;
 
   for (let i =0; i < arr.length; i++) {
+    // 서로 교환하면서 마지막 값을 채워나가는 방법
     for (let j = 0; j < arr.length -i; j ++) {
       if (arr[j] > arr[j+1]) {
         const temp = arr[j + 1]
