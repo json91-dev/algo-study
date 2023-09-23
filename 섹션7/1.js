@@ -6,6 +6,8 @@ function mySolution(arr){
     let minIndex = -1
 
     // 마지막 인자에서 하나씩 채워나감.
+    // 즉, 첫번째 인자랑 뒤에있는 것들이랑 비교하고 첫번째 값 정함. (첫번째 값이랑 제일 작은 애랑 비교해서 바꿈)
+    // 다음에는 두번째 인자랑 뒤에있는 것들이랑 비교하고 두번째 값 정함.
     for (let j = arr.length -1; j > i; j--) {
       if (min > arr[j]) {
         min = arr[j]
